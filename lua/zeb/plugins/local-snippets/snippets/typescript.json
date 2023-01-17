@@ -1,0 +1,7 @@
+{
+  "Unicorn Log": {
+    "prefix": "unilog",
+    "body": ["console.log('🦄 === $1', $2);"],
+    "description": "Console log with unicorn emoji"
+  }
+}
