@@ -33,6 +33,8 @@ return packer.startup(function(use)
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
+	use("mfussenegger/nvim-dap")
+
 	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
@@ -136,7 +138,42 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use("vimwiki/vimwiki")
+	use({
+		"vimwiki/vimwiki",
+		config = function()
+			vim.cmd([[
+        let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+        let g:vimwiki_global_ext = 0
+      ]])
+		end,
+	})
+
+	use({
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	})
+
+	-- use({
+	-- 	"rust-lang/rust.vim",
+	-- 	config = function()
+	-- 		vim.cmd([[
+	--      let g:rustfmt_autosave = 1
+	--      ]])
+	-- 	end,
+	-- })
+
+	-- rust
+	use("simrat39/rust-tools.nvim")
+
+	-- Visualize lsp progress
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup()
+		end,
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()
