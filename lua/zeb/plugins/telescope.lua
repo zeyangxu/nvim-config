@@ -19,6 +19,11 @@ telescope.setup({
 				["<C-k>"] = actions.move_selection_previous, -- move to prev result
 				["<C-j>"] = actions.move_selection_next, -- move to next result
 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
+				["<C-h>"] = actions.select_horizontal,
+			},
+			n = {
+				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
+				["<C-h>"] = actions.select_horizontal,
 			},
 		},
 		file_ignore_patterns = { "node_modules" },
@@ -28,3 +33,4 @@ telescope.setup({
 telescope.load_extension("fzf")
 telescope.load_extension("lazygit")
 telescope.load_extension("project")
+telescope.load_extension("refactoring")
